@@ -17,6 +17,15 @@ public class PersonObject {
         y = 200;
     }
 
+
+    public void moveLeft() {
+        x -= 5;
+    }
+
+    public void moveRight() {
+        x += 5;
+    }
+
     public void update(float delta) {
 
     }
@@ -25,5 +34,3 @@ public class PersonObject {
         batch.draw(texture, x, y, width, height);
     }
 }
-
-
