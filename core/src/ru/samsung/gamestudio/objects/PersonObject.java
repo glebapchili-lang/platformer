@@ -7,14 +7,14 @@ public class PersonObject {
 
     private Texture texture;
     private float x, y;
-    private float width = 100;
-    private float height = 100;
+    private float width = 300;
+    private float height = 500;
 
     public PersonObject() {
         texture = new Texture("player.png");
 
-        x = 200;
-        y = 200;
+        x = 2;
+        y = 0;
     }
 
     public void update(float delta) {

@@ -8,7 +8,7 @@ public class EarthObject {
     private Texture texture;
     private float x, y;
     private float width = 800;
-    private float height = 100;
+    private float height = 180;
 
     public EarthObject() {
         texture = new Texture("ground.png");
