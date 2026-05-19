@@ -35,5 +35,8 @@ public class PersonObject {
 
     public void draw(SpriteBatch batch) {
         batch.draw(texture, x, y, width, height);
+
+
+
     }
 }
