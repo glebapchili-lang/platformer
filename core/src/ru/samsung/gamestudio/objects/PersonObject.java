@@ -1,6 +1,7 @@
 package ru.samsung.gamestudio.objects;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PersonObject {
@@ -9,12 +10,21 @@ public class PersonObject {
     private float x, y;
     private float width = 300;
     private float height = 500;
+    private float speed = 5;
+
+    Texture[] framesArray;
 
     public PersonObject() {
-        texture = new Texture("player.png");
-
-        x = 2;
-        y = 0;
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.width = width;
+        this.height = height;
+        framesArray = new Texture[]{
+                new Texture("player.png"),
+                new Texture("playerRUN1.png"),
+                new Texture("playerRUN2.png"),
+        };
     }
 
 
@@ -32,11 +42,11 @@ public class PersonObject {
     public void update(float delta) {
 
     }
+    int frameCounter;
 
-    public void draw(SpriteBatch batch) {
-        batch.draw(texture, x, y, width, height);
-
-
-
+    public void draw(Batch batch) {
+        int frameMultiplier = 10;
+        batch.draw(framesArray[frameCounter / frameMultiplier], x, y, width, height);
+        if (frameCounter++ == framesArray.length * frameMultiplier - 1) frameCounter = 0;
     }
 }
