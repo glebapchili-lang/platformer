@@ -26,6 +26,9 @@ public class PersonObject {
         x += 5;
     }
 
+     public void jump(){
+         y+= 50;
+     }
     public void update(float delta) {
 
     }

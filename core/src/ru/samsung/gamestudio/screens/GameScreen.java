@@ -1,6 +1,7 @@
 package ru.samsung.gamestudio.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector3;
@@ -20,6 +21,8 @@ public class GameScreen extends ScreenAdapter {
     private Texture leftBtn;
     private Texture rightBtn;
 
+    private Texture jumpBtn;
+
     private float btnSize = 150;
     private Vector3 touch = new Vector3();
 
@@ -31,6 +34,7 @@ public class GameScreen extends ScreenAdapter {
 
         leftBtn = new Texture("left1.png");
         rightBtn = new Texture("right1.png");
+        jumpBtn = new Texture("jump1.png");
     }
 
     @Override
@@ -52,12 +56,27 @@ public class GameScreen extends ScreenAdapter {
         // кнопки
         game.batch.draw(leftBtn, 50, 50, btnSize, btnSize);
         game.batch.draw(rightBtn, 250, 50, btnSize, btnSize);
+        game.batch.draw(jumpBtn, 600, 50, btnSize, btnSize);
+
 
         game.batch.end();
     }
 
     private void handleInput() {
 
+
+
+            if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+                player.moveLeft();
+            }
+
+            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+                player.moveRight();
+            }
+
+            if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+                player.jump();
+            }
         if (Gdx.input.isTouched()) {
 
             touch.set(Gdx.input.getX(), Gdx.input.getY(), 0);
@@ -66,19 +85,26 @@ public class GameScreen extends ScreenAdapter {
             float x = touch.x;
             float y = touch.y;
 
-            // левая кнопка
+
             if (x >= 50 && x <= 50 + btnSize &&
                     y >= 50 && y <= 50 + btnSize) {
 
                 player.moveLeft();
             }
 
-            // правая кнопка
+
             if (x >= 250 && x <= 250 + btnSize &&
                     y >= 50 && y <= 50 + btnSize) {
 
                 player.moveRight();
             }
+            if (x >= 600 && x <= 600 + btnSize &&
+                    y >= 50 && y <= 50 + btnSize) {
+
+                player.jump();
+            }
+
+
         }
     }
 
@@ -86,5 +112,6 @@ public class GameScreen extends ScreenAdapter {
     public void dispose() {
         leftBtn.dispose();
         rightBtn.dispose();
+        jumpBtn.dispose();
     }
 }
